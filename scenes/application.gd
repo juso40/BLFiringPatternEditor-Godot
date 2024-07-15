@@ -2,7 +2,7 @@ extends SubViewport
 
 const HitMarker: PackedScene = preload("res://scenes/hit_marker.tscn") as PackedScene
 
-enum GridSize { NONE = 0, SMALL = 8, MEDIUM = 16, LARGE = 32 }
+enum GridSize { NONE = 0, SMALL = 16, MEDIUM = 32, LARGE = 64 }
 
 var current_grid: GridSize = GridSize.NONE
 var hit_markers: Array[Control] = []

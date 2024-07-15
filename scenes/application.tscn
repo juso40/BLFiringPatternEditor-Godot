@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bx8j428qufekt"]
 
-[ext_resource type="Texture2D" uid="uid://2k1she2usqdv" path="res://assets/BL2FiringPatternBG.png" id="1_7ahax"]
 [ext_resource type="Script" path="res://scenes/application.gd" id="1_38oou"]
 [ext_resource type="Shader" path="res://grid.gdshader" id="2_i3u4j"]
+[ext_resource type="Texture2D" uid="uid://euskhdq3gl3j" path="res://assets/background.png" id="2_ig4ws"]
 [ext_resource type="Script" path="res://scenes/help.gd" id="3_o0jjn"]
 [ext_resource type="Texture2D" uid="uid://bbfxn7x5on772" path="res://assets/export.svg" id="5_boyaj"]
 [ext_resource type="Script" path="res://scenes/show_export.gd" id="5_swboh"]
@@ -96,7 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7ahax")
+texture = ExtResource("2_ig4ws")
 expand_mode = 5
 stretch_mode = 4
 
