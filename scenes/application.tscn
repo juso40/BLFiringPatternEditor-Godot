@@ -4,16 +4,16 @@
 [ext_resource type="Script" path="res://scenes/application.gd" id="1_38oou"]
 [ext_resource type="Shader" path="res://grid.gdshader" id="2_i3u4j"]
 [ext_resource type="Script" path="res://scenes/help.gd" id="3_o0jjn"]
-[ext_resource type="Texture2D" uid="uid://dge0ni2411u7g" path="res://icon.svg" id="4_uixhl"]
+[ext_resource type="Texture2D" uid="uid://bbfxn7x5on772" path="res://assets/export.svg" id="5_boyaj"]
 [ext_resource type="Script" path="res://scenes/show_export.gd" id="5_swboh"]
 [ext_resource type="Script" path="res://scenes/export.gd" id="6_0oab2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63h7v"]
 shader = ExtResource("2_i3u4j")
-shader_parameter/size = Vector2(1280, 720)
-shader_parameter/line_width = 0.1
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/grid_size = 16.0
+shader_parameter/columns = 64.0
+shader_parameter/rows = 36.0
+shader_parameter/border_width = 0.05
+shader_parameter/border_color = Color(1, 1, 1, 0.552941)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgo55"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -114,6 +114,32 @@ unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 
+[node name="MirrorLineX" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(3, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="MirrorLineY" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 3)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+color = Color(0, 0.273438, 1, 1)
+
 [node name="Help" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -124,6 +150,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HelpPanelContainer" type="PanelContainer" parent="Help"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
@@ -168,15 +195,15 @@ offset_top = -52.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ShowExport" type="TextureButton" parent="VBoxContainer"]
+[node name="ShowExport" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 size_flags_stretch_ratio = 159.95
-texture_normal = ExtResource("4_uixhl")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Export"
+icon = ExtResource("5_boyaj")
 script = ExtResource("5_swboh")
 
 [node name="Export" type="Control" parent="VBoxContainer"]

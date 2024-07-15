@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 const EXPORT_Y_SIZE: int = 128
 

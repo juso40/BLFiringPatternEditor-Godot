@@ -1,15 +1,14 @@
 shader_type canvas_item;
-render_mode blend_mix;
 
-uniform vec2 size = vec2(1280.0, 720.0);
-uniform float line_width : hint_range(0, 1) = 0.1;
-uniform vec2 offset = vec2(0.0, 0.0);
-uniform float grid_size = 16.0;
+uniform float columns = 64.0;
+uniform float rows = 36.0;
+uniform float border_width = 0.05;
+uniform vec4 border_color : source_color;
+
 
 void fragment() {
-	vec2 uv = (offset / size) + UV;
-	vec2 r = mod(size * uv, vec2(grid_size));
-	vec2 lines = smoothstep(1.0 - line_width, 1, r / vec2(grid_size));
-	float alpha = dot(lines, vec2(1.0, 1.0));
-	COLOR.a = alpha;
+    vec2 grid = fract(vec2(UV.x * columns, UV.y * rows));
+	vec2 bottom_left = step(vec2(border_width), grid);
+	vec2 top_right = step(vec2(border_width), 1.0 - grid);
+	COLOR = border_color - (bottom_left.x * bottom_left.y * top_right.x * top_right.y);
 }
