@@ -1,0 +1,207 @@
+[gd_scene load_steps=15 format=3 uid="uid://bx8j428qufekt"]
+
+[ext_resource type="Texture2D" uid="uid://2k1she2usqdv" path="res://assets/BL2FiringPatternBG.png" id="1_7ahax"]
+[ext_resource type="Script" path="res://scenes/application.gd" id="1_38oou"]
+[ext_resource type="Shader" path="res://grid.gdshader" id="2_i3u4j"]
+[ext_resource type="Script" path="res://scenes/help.gd" id="3_o0jjn"]
+[ext_resource type="Texture2D" uid="uid://dge0ni2411u7g" path="res://icon.svg" id="4_uixhl"]
+[ext_resource type="Script" path="res://scenes/show_export.gd" id="5_swboh"]
+[ext_resource type="Script" path="res://scenes/export.gd" id="6_0oab2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63h7v"]
+shader = ExtResource("2_i3u4j")
+shader_parameter/size = Vector2(1280, 720)
+shader_parameter/line_width = 0.1
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/grid_size = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgo55"]
+bg_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_jm54s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsvti"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.803922)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmxgd"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.909804)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8on5"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_j8gws"]
+number_color = Color(0.828323, 0.310181, 0.902344, 1)
+symbol_color = Color(0.90625, 0.177002, 0.177002, 1)
+function_color = Color(0.361267, 1, 0.289063, 1)
+member_variable_color = Color(1, 1, 1, 1)
+keyword_colors = {
+"FiringModeDefinition": Color(0.894531, 0.894531, 0.894531, 1),
+"set": Color(0.964844, 0.864732, 0.21106, 1)
+}
+
+[node name="Application" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+size_2d_override = Vector2i(1280, 720)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+script = ExtResource("1_38oou")
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7ahax")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="GridOverlay" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_63h7v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HitMarkers" type="Control" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Help" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HelpPanelContainer" type="PanelContainer" parent="Help"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hgo55")
+script = ExtResource("3_o0jjn")
+
+[node name="HelpLabel" type="Label" parent="Help/HelpPanelContainer"]
+layout_mode = 2
+text = "Help"
+label_settings = SubResource("LabelSettings_jm54s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpMessagePanelContainer" type="PanelContainer" parent="Help"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lsvti")
+
+[node name="HelpMessageLabel" type="Label" parent="Help/HelpMessagePanelContainer"]
+layout_mode = 2
+text = "LMB: Add New Marker
+RMB: Remove Last Marker
+G: Toggle Grids
+X/Y: Enable/Disable X/Y Mirroring"
+
+[node name="ExportSetCommand" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+editable = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ShowExport" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 159.95
+texture_normal = ExtResource("4_uixhl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_swboh")
+
+[node name="Export" type="Control" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("6_0oab2")
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Export"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_colors/selection_color = Color(0.517647, 0.611765, 0.654902, 0.329412)
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_tmxgd")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_u8on5")
+text = "set FiringModeDefinition FiringPatternLines ()"
+editable = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+syntax_highlighter = SubResource("CodeHighlighter_j8gws")
+highlight_all_occurrences = true
