@@ -28,9 +28,15 @@ func pop_hitmarker(index: int = -1) -> void:
 	markers_changed.emit(hit_markers)
 
 func move_marker(marker: HitMarker, index: int) -> void:
+	index = min(index, hit_markers.size()-1)
 	var old_index: int = marker.index
 	hit_markers.erase(marker)
-	hit_markers.insert(index, marker)
+	if index >= hit_markers.size():
+		hit_markers.append(marker)
+	else:
+		hit_markers.insert(index, marker)
+	
+
 	for i in range(min(old_index, index), max(old_index, index) + 1):
 		hit_markers[i].index = i
 	markers_changed.emit(hit_markers)

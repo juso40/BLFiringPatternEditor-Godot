@@ -95,7 +95,7 @@ layout_mode = 2
 stretch = true
 
 [node name="GameViewport" parent="HSplitContainer/AspectRatioContainer/SubViewportContainer" instance=ExtResource("1_15jx4")]
-size = Vector2i(979, 550)
+size = Vector2i(2, 2)
 
 [node name="SettingsPanel" parent="HSplitContainer" instance=ExtResource("2_w0aob")]
 layout_mode = 2
