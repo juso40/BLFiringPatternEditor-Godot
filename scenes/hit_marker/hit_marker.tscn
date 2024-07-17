@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d03mqmhl20k0m"]
+
+[ext_resource type="Script" path="res://scenes/hit_marker/hit_marker.gd" id="1_ogmua"]
+
+[node name="HitMarker" type="Control" groups=["HitMarker"]]
+modulate = Color(0.875, 0, 1, 1)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ogmua")
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, -8, 0, 8)
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(8, 0, -8, 0)
+width = 2.0

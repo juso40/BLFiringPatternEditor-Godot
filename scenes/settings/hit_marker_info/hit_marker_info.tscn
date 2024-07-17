@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://wejsroombn3b"]
+
+[ext_resource type="Script" path="res://scenes/settings/hit_marker_info/hit_marker_info.gd" id="1_d7mpm"]
+[ext_resource type="Texture2D" uid="uid://b2ksx6spq1muf" path="res://assets/grab.svg" id="1_nwbqo"]
+[ext_resource type="Texture2D" uid="uid://cre6r0148qahe" path="res://assets/remove.svg" id="3_gmbka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6axej"]
+content_margin_left = 1.0
+content_margin_top = 2.0
+content_margin_right = 1.0
+content_margin_bottom = 2.0
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pem4r"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HitMarkerInfo" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 44.0
+grow_horizontal = 2
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_6axej")
+script = ExtResource("1_d7mpm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GrabButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_constants/icon_max_width = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pem4r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pem4r")
+text = "1"
+icon = ExtResource("1_nwbqo")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="XSpinBox" type="SpinBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+min_value = -640.0
+max_value = 640.0
+step = 0.1
+prefix = "x"
+
+[node name="YSpinBox" type="SpinBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+min_value = -360.0
+max_value = 360.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+prefix = "y"
+
+[node name="RemoveButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 1
+icon = ExtResource("3_gmbka")

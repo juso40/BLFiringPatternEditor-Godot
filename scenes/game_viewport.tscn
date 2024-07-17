@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3df2yorda4ou"]
+
+[ext_resource type="Script" path="res://scenes/game_viewport.gd" id="1_8e2nu"]
+[ext_resource type="Texture2D" uid="uid://euskhdq3gl3j" path="res://assets/background.png" id="2_ceulw"]
+[ext_resource type="Shader" path="res://grid.gdshader" id="3_vsqlk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63h7v"]
+shader = ExtResource("3_vsqlk")
+shader_parameter/columns = 64.0
+shader_parameter/rows = 36.0
+shader_parameter/border_width = 0.05
+shader_parameter/border_color = Color(1, 1, 1, 0.552941)
+
+[node name="GameViewport" type="SubViewport"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+size_2d_override = Vector2i(1280, 720)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+script = ExtResource("1_8e2nu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ceulw")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="GridOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_63h7v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HitMarkers" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MirrorLineX" type="ColorRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(3, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="MirrorLineY" type="ColorRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 3)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+color = Color(0, 0.273438, 1, 1)

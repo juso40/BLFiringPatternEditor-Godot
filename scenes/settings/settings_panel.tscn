@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://6n5p2q3b3o8e"]
+
+[ext_resource type="Script" path="res://scenes/settings/settings_panel.gd" id="1_32mce"]
+[ext_resource type="Script" path="res://scenes/settings/hit_marker_info_container.gd" id="2_icwfr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ixgu"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhth8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.670588)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="SettingsPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_32mce")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_vertical = 2
+
+[node name="OptionsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_4ixgu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridColor" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/GridColor"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+text = "Grid Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/GridColor"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="GridSize" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/GridSize"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+text = "Grid Size"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer/GridSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 256.0
+step = 16.0
+scrollable = false
+tick_count = 10
+
+[node name="ExportScalingFactor" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/ExportScalingFactor"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.0
+text = "Pattern Scale"
+
+[node name="PatternScaleSpinBox" type="SpinBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/ExportScalingFactor"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 20.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhth8")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HitMarkerInfoContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_icwfr")
