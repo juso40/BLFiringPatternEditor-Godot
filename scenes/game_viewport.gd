@@ -9,16 +9,14 @@ enum GridSize { NONE = 0, SMALL = 16, MEDIUM = 32, LARGE = 64 }
 
 var current_grid: GridSize = GridSize.NONE
 
-var mirror_y: bool = false
-var mirror_x: bool = false
-
 @onready var grid_overlay: ColorRect = %GridOverlay
 
 
 func _ready() -> void:
-	%MirrorLineY.visible = mirror_y
-	%MirrorLineX.visible = mirror_x
+	%MirrorLineY.visible = false
+	%MirrorLineX.visible = false
 	toggle_grids()
+	HitMarkerManager.marker_create_at.connect(marker_at)
 
 
 func _input(event: InputEvent) -> void:
@@ -60,13 +58,13 @@ func toggle_grids() -> void:
 
 
 func toggle_mirror_y() -> void:
-	mirror_y = not mirror_y
-	%MirrorLineY.visible = mirror_y
+	HitMarkerManager.mirror_y = not HitMarkerManager.mirror_y
+	%MirrorLineY.visible = HitMarkerManager.mirror_y
 
 
 func toggle_mirror_x() -> void:
-	mirror_x = not mirror_x
-	%MirrorLineX.visible = mirror_x
+	HitMarkerManager.mirror_x = not HitMarkerManager.mirror_x
+	%MirrorLineX.visible = HitMarkerManager.mirror_x
 
 
 func marker_at(pos: Vector2) -> void:
@@ -75,15 +73,15 @@ func marker_at(pos: Vector2) -> void:
 	%HitMarkers.add_child(hit_marker)
 	HitMarkerManager.append_hitmarker(hit_marker)
 
-	if not mirror_x and not mirror_y:
+	if not HitMarkerManager.mirror_x and not HitMarkerManager.mirror_y:
 		return
 
 	var hit_marker_mirrored = HitMarkerScene.instantiate() as Control
-	if mirror_y and mirror_x:
+	if HitMarkerManager.mirror_y and HitMarkerManager.mirror_x:
 		hit_marker_mirrored.position = Vector2(1280 - pos.x, 720 - pos.y)
-	elif mirror_y:
+	elif HitMarkerManager.mirror_y:
 		hit_marker_mirrored.position = Vector2(pos.x, 720 - pos.y)
-	elif mirror_x:
+	elif HitMarkerManager.mirror_x:
 		hit_marker_mirrored.position = Vector2(1280 - pos.x, pos.y)
 	%HitMarkers.add_child(hit_marker_mirrored)
 	HitMarkerManager.append_hitmarker(hit_marker)

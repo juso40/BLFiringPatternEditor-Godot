@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6n5p2q3b3o8e"]
+[gd_scene load_steps=7 format=3 uid="uid://6n5p2q3b3o8e"]
 
 [ext_resource type="Script" path="res://scenes/settings/settings_panel.gd" id="1_32mce"]
 [ext_resource type="Script" path="res://scenes/settings/hit_marker_info_container.gd" id="2_icwfr"]
+[ext_resource type="Texture2D" uid="uid://c6023uttfqets" path="res://assets/import.svg" id="2_ri1pe"]
+[ext_resource type="PackedScene" uid="uid://bu1lhhydlxcqq" path="res://scenes/import_file_popup/import_file_popup_panel.tscn" id="4_f61og"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ixgu"]
 font_size = 24
@@ -51,6 +53,15 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ImportButton" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 32
+text = "Import"
+icon = ExtResource("2_ri1pe")
 
 [node name="GridColor" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
@@ -114,3 +125,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_icwfr")
+
+[node name="ImportFilePopupPanel" parent="." instance=ExtResource("4_f61og")]
+unique_name_in_owner = true
+visible = false

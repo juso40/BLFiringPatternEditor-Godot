@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu1lhhydlxcqq"]
+
+[ext_resource type="Script" path="res://scenes/import_file_popup/import_file_popup_panel.gd" id="1_da8r5"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_hyvl1"]
+number_color = Color(0.828323, 0.310181, 0.902344, 1)
+symbol_color = Color(0.90625, 0.177002, 0.177002, 1)
+function_color = Color(0.361267, 1, 0.289063, 1)
+member_variable_color = Color(1, 1, 1, 1)
+keyword_colors = {
+"FiringModeDefinition": Color(0.894531, 0.894531, 0.894531, 1),
+"set": Color(0.964844, 0.864732, 0.21106, 1)
+}
+
+[node name="ImportFilePopupPanel" type="PopupPanel"]
+auto_translate_mode = 1
+disable_3d = true
+title = "Import File"
+initial_position = 2
+size = Vector2i(620, 360)
+visible = true
+unresizable = false
+borderless = false
+always_on_top = true
+script = ExtResource("1_da8r5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CodeEdit" type="CodeEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "set Object Attribute ((Name=value), das=dsa)) sdasd as sda dasd asddasdasdasdasdsadasdasdasdsasdadasd sad asdasdasdasdaaaaaa1232131111111111111333333333333333333333222222222223333333333"
+wrap_mode = 1
+autowrap_mode = 1
+syntax_highlighter = SubResource("CodeHighlighter_hyvl1")
+
+[node name="ImportMessages" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+bbcode_enabled = true
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContaine" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer/HBoxContaine"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Cancel"
+
+[node name="ImportButton" type="Button" parent="VBoxContainer/HBoxContainer/HBoxContaine"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Import (Overwrite)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Pattern Scale (Import only)"
+
+[node name="ImportPatternScale" type="SpinBox" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+step = 0.1
+value = 1.0
