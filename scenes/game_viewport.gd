@@ -78,10 +78,19 @@ func marker_at(pos: Vector2) -> void:
 
 	var hit_marker_mirrored = HitMarkerScene.instantiate() as Control
 	if HitMarkerManager.mirror_y and HitMarkerManager.mirror_x:
-		hit_marker_mirrored.position = Vector2(1280 - pos.x, 720 - pos.y)
+		var hit_marker_mirrored2 = HitMarkerScene.instantiate() as Control
+		var hit_marker_mirrored3 = HitMarkerScene.instantiate() as Control
+		hit_marker_mirrored2.position = Vector2(1280 - pos.x, 720 - pos.y)
+		hit_marker_mirrored3.position = Vector2(pos.x, 720 - pos.y)
+		hit_marker_mirrored.position = Vector2(1280 - pos.x, pos.y)
+		%HitMarkers.add_child(hit_marker_mirrored2)
+		HitMarkerManager.append_hitmarker(hit_marker_mirrored2)
+		%HitMarkers.add_child(hit_marker_mirrored3)
+		HitMarkerManager.append_hitmarker(hit_marker_mirrored3)
+		
 	elif HitMarkerManager.mirror_y:
 		hit_marker_mirrored.position = Vector2(pos.x, 720 - pos.y)
 	elif HitMarkerManager.mirror_x:
 		hit_marker_mirrored.position = Vector2(1280 - pos.x, pos.y)
 	%HitMarkers.add_child(hit_marker_mirrored)
-	HitMarkerManager.append_hitmarker(hit_marker)
+	HitMarkerManager.append_hitmarker(hit_marker_mirrored)

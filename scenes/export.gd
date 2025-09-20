@@ -27,8 +27,9 @@ func update_export_command(markers: Array[HitMarker]) -> void:
 		export_command += (
 			EXPORT_TEMPLATE
 			% [
-				(marker.position.x - CENTER_X) * HitMarkerManager.MAGIC_MULTIPLIER,
-				(CENTER_Y - marker.position.y) * HitMarkerManager.MAGIC_MULTIPLIER
+				
+				(CENTER_Y - marker.position.y) * HitMarkerManager.MAGIC_MULTIPLIER,
+				(marker.position.x - CENTER_X) * HitMarkerManager.MAGIC_MULTIPLIER
 			]
 		)
 

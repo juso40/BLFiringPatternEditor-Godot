@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6n5p2q3b3o8e"]
 
-[ext_resource type="Script" path="res://scenes/settings/settings_panel.gd" id="1_32mce"]
-[ext_resource type="Script" path="res://scenes/settings/hit_marker_info_container.gd" id="2_icwfr"]
+[ext_resource type="Script" uid="uid://dy5c4odxwnys8" path="res://scenes/settings/settings_panel.gd" id="1_32mce"]
+[ext_resource type="Script" uid="uid://bsvo8ya3rbru" path="res://scenes/settings/hit_marker_info_container.gd" id="2_icwfr"]
 [ext_resource type="Texture2D" uid="uid://c6023uttfqets" path="res://assets/import.svg" id="2_ri1pe"]
 [ext_resource type="PackedScene" uid="uid://bu1lhhydlxcqq" path="res://scenes/import_file_popup/import_file_popup_panel.tscn" id="4_f61og"]
 

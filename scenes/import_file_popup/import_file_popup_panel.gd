@@ -45,8 +45,8 @@ func _on_import_button_pressed() -> void:
 		var yaw: int = m.get_string("yaw").to_int()
 
 		var position: Vector2 = Vector2(
-			HitMarkerManager.SIZE_X / 2 + pitch / pattern_scale,
-			HitMarkerManager.SIZE_Y / 2 - yaw / pattern_scale
+			HitMarkerManager.SIZE_X / 2 + yaw / pattern_scale,
+			HitMarkerManager.SIZE_Y / 2 - pitch / pattern_scale
 		)
 		if (
 			position.x < 0

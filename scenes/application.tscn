@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://c3df2yorda4ou" path="res://scenes/game_viewport.tscn" id="1_15jx4"]
 [ext_resource type="Texture2D" uid="uid://dge0ni2411u7g" path="res://icon.svg" id="1_nww3l"]
 [ext_resource type="PackedScene" uid="uid://6n5p2q3b3o8e" path="res://scenes/settings/settings_panel.tscn" id="2_w0aob"]
-[ext_resource type="Script" path="res://scenes/help.gd" id="3_o0jjn"]
+[ext_resource type="Script" uid="uid://8i53s52uahdl" path="res://scenes/help.gd" id="3_o0jjn"]
 [ext_resource type="Texture2D" uid="uid://bbfxn7x5on772" path="res://assets/export.svg" id="5_boyaj"]
-[ext_resource type="Script" path="res://scenes/show_export.gd" id="5_swboh"]
-[ext_resource type="Script" path="res://scenes/export.gd" id="6_0oab2"]
+[ext_resource type="Script" uid="uid://cj5obccu6on6n" path="res://scenes/show_export.gd" id="5_swboh"]
+[ext_resource type="Script" uid="uid://bww6c0obm032y" path="res://scenes/export.gd" id="6_0oab2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgo55"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -170,8 +170,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/background_color = Color(0, 0, 0, 0)
 theme_override_colors/selection_color = Color(0.517647, 0.611765, 0.654902, 0.329412)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
 theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_tmxgd")

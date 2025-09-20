@@ -27,4 +27,3 @@ func update_hit_marker_info(markers: Array[HitMarker]) -> void:
 func _on_pattern_scale_changed(value: int) -> void:
 	HitMarkerManager.MAGIC_MULTIPLIER = value
 	HitMarkerManager.markers_changed.emit(HitMarkerManager.hit_markers)
-
